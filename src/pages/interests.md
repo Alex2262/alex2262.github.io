@@ -10,10 +10,9 @@ This page is a less formal place for topics I keep coming back to.
 
 ## Technical
 
-I’m especially interested in systems, algorithms, compilers, computer
-architecture, and machine learning infrastructure. I like understanding how
-abstractions are implemented underneath: how a model turns into kernels, how
-kernels map to hardware, and where the actual bottlenecks are.
+I’m especially interested in algorithms, hardware accelerators, and all sorts of ML including interpretability, 
+architecture innovation, and efficiency. In general, I really enjoy problem 
+solving and engineering, be it technical work or constructing perfect macarons.
 
 ## Chess
 
@@ -24,5 +23,5 @@ shaped a lot of how I think about search, evaluation, and performance.
 ## Writing notes
 
 I use writing as a way to clarify ideas. Some topics I want to write about
-include dynamic programming optimization, systolic arrays, diffusion models, GPU
+include dynamic programming optimization, diffusion models, GPU
 kernels, and efficient inference.
