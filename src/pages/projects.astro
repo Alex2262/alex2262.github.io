@@ -12,8 +12,8 @@ all.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const categoryOrder = [
   "ML systems / kernels",
   "Algorithms / engines",
-  "Machine learning experiments",
-  "Simulations / older projects",
+  "Machine learning",
+  "Simulations",
 ];
 
 const categories = [...new Set(all.map((p) => p.data.category))].sort((a, b) => {

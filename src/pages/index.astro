@@ -13,21 +13,31 @@ import { SITE } from "../config";
   </p>
 
   <p>
-    I’m an undergraduate at UC Berkeley interested in systems, machine learning
-    infrastructure, algorithms, and hardware-aware optimization. I like the gap
-    between high-level model code and the hardware it runs on — memory movement,
-    kernel design, accelerator utilization, and why theoretically simple
-    operations can behave very differently in practice.
+    I'm an undergraduate at UC Berkeley with a broad interest in optimization,
+    spanning theoretical algorithms to machine learning. In practice, this has
+    ranged from building a competitive chess engine in C++ to working on
+    efficient ML inference. I like approaching problems from first principles,
+    and have recently been moving further into systems and hardware.
+  </p>
+
+  <p>
+    I grew up in New York. I enjoy competitive programming, used to play chess
+    competitively, and play piano. I also bake — not particularly well, but
+    I've thoroughly optimized the process of making almost-perfect macarons.
   </p>
 
   <section>
     <h2>Currently</h2>
     <p>
-      I’m profiling VAE decoder memory usage for video diffusion models and
-      building Conv3D benchmarks that compare PyTorch/cuDNN against custom Triton
-      kernels. Alongside that I’ve been writing accelerator-specific kernels on
-      AWS Neuron (NKI) and reading more deeply into computer architecture,
-      compilers, and efficient ML systems.
+      I'm interning at MatX as an ML researcher, working on sparse attention to
+      shift LLM decode from the memory-bound regime toward compute — primarily by
+      reducing which KV cache entries are loaded at each step. I'm also an
+      undergraduate researcher at BAIR in the Pallas group, working on making
+      video generation more efficient through VAE optimization and sparse methods
+      for diffusion language models. At Berkeley, I'm involved in Machine Learning
+      at Berkeley on the education and research committees; through ML@B, I wrote
+      NKI kernels for AWS Trainium 2 as part of a contracted project with Amazon
+      Annapurna Labs.
     </p>
   </section>
 
@@ -36,15 +46,15 @@ import { SITE } from "../config";
     <dl class="worklist">
       <dt>Altair Chess Engine</dt>
       <dd>
-        A UCI chess engine that reached superhuman strength and has received
-        thousands of downloads.
+        A formerly top-30, 3600+ rated chess engine in C++, downloaded over 3000
+        times and competitive in the CCC and TCEC championships.
       </dd>
 
-      <dt>Conv3D benchmarking</dt>
-      <dd>Correctness and performance infrastructure for realistic video VAE workloads.</dd>
-
-      <dt>3D RoPE NKI kernel</dt>
-      <dd>An accelerator-specific implementation of 3D rotary positional embeddings on AWS Neuron.</dd>
+      <dt>Annapurna Labs (Contract)</dt>
+      <dd>
+        Fused NKI kernels for attention and 3D-RoPE on AWS Trainium 2, with
+        roofline analysis and MFU optimization for video diffusion inference.
+      </dd>
     </dl>
     <p class="more-link">
       <a href="/projects">All projects →</a>

@@ -3,7 +3,7 @@ title: "Where Performance Goes"
 date: "2026-06-04"
 description: "A short field guide to figuring out where the time in a kernel actually goes — and a demonstration of how prose, code, and tables render here."
 tags: ["ml-systems", "profiling", "performance"]
-draft: false
+draft: true
 ---
 
 Most performance work starts with a wrong guess. You assume the matmul is the
