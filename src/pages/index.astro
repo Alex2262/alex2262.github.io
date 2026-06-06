@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../config";
+---
+
+<BaseLayout title={SITE.name}>
+  <h1>{SITE.name}</h1>
+
+  <p class="contact-row">
+    <a href={SITE.githubUrl}>{SITE.githubLabel}</a>
+    <span class="sep">·</span>
+    <span>{SITE.emailDisplay}</span>
+  </p>
+
+  <p>
+    I’m an undergraduate at UC Berkeley interested in systems, machine learning
+    infrastructure, algorithms, and hardware-aware optimization. I like the gap
+    between high-level model code and the hardware it runs on — memory movement,
+    kernel design, accelerator utilization, and why theoretically simple
+    operations can behave very differently in practice.
+  </p>
+
+  <section>
+    <h2>Currently</h2>
+    <p>
+      I’m profiling VAE decoder memory usage for video diffusion models and
+      building Conv3D benchmarks that compare PyTorch/cuDNN against custom Triton
+      kernels. Alongside that I’ve been writing accelerator-specific kernels on
+      AWS Neuron (NKI) and reading more deeply into computer architecture,
+      compilers, and efficient ML systems.
+    </p>
+  </section>
+
+  <section>
+    <h2>Selected work</h2>
+    <dl class="worklist">
+      <dt>Altair Chess Engine</dt>
+      <dd>
+        A UCI chess engine that reached superhuman strength and has received
+        thousands of downloads.
+      </dd>
+
+      <dt>Conv3D benchmarking</dt>
+      <dd>Correctness and performance infrastructure for realistic video VAE workloads.</dd>
+
+      <dt>3D RoPE NKI kernel</dt>
+      <dd>An accelerator-specific implementation of 3D rotary positional embeddings on AWS Neuron.</dd>
+    </dl>
+    <p class="more-link">
+      <a href="/projects">All projects →</a>
+    </p>
+  </section>
+</BaseLayout>

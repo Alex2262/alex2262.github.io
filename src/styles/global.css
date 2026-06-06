@@ -1,0 +1,502 @@
+:root {
+  /* Warm parchment palette — soft, a little aged, never stark white. */
+  --bg: #f1e7d5;
+  /* Project-card fill — a subtle warm tint; the jade left-stripe is what gives
+     each card its identity, so the fill stays quiet. */
+  --card-bg: #ebe0ca;
+  --text: #2c2620;
+  --text-soft: #4d4434;
+  --muted: #786b56;
+  --border: #d8c7a8;
+  --border-strong: #c4ad84;
+  --link: #7c4a2c;
+  --link-hover: #5a3217;
+  --code-bg: #ece0c9;
+  --code-block-bg: #e7d8bb;
+  --accent: #8b5e34;
+  /* Jade — the site's structural accent (labels, nav underline, card stripe,
+     rules). Deep and saturated so it reads as a deliberate color, never grey. */
+  --label: #1f463c;
+
+  /* Serif for reading, a contrasting sans for structural labels. */
+  --font-serif: "EB Garamond Variable", "EB Garamond", Georgia, Cambria,
+    "Times New Roman", serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
+  /* Section-label typeface — a serif, but a sturdier one than the body Garamond
+     so it holds the jade cleanly when uppercased. Swap this one line to try
+     another (e.g. "Lora Variable", "Spectral", "Bitter Variable"). */
+  --font-label: "Fraunces Variable", "EB Garamond Variable", Georgia, serif;
+
+  --content-width: 760px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.7;
+  font-weight: 450;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 36px 24px 96px;
+}
+
+section {
+  margin: 44px 0;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+/* Consistent tight gap after the page title — applies whether the first
+   paragraph has class="page-intro" (projects/writing) or is a bare markdown
+   <p> (interests/resume). Without this, margin collapsing gives markdown pages
+   ~18px vs ~7px on classed pages. */
+h1 + p {
+  margin-top: 0.3rem;
+}
+
+/* ── Headings ─────────────────────────────────────────────
+   Everything stays in the serif. Distinction comes from *color, case, and
+   letter-spacing* — never a second typeface:
+   - h1  page title      → serif, modest size
+   - h2  section label   → serif, small uppercase, tracked, with a hairline rule
+   - h3  entry title      → serif in the warm sienna accent (cards & essays) */
+h1 {
+  font-family: var(--font-serif);
+  font-size: 1.4em;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+/* Section labels — a serif (--font-label), uppercase, in jade. Uses a sturdier
+   serif than the body so the color stays solid at small uppercase sizes. */
+h2 {
+  font-family: var(--font-label);
+  font-size: 0.86em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--label);
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--border);
+  margin: 2.6rem 0 1.2rem;
+}
+
+h3 {
+  font-family: var(--font-serif);
+  font-size: 1.12em;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--link);
+  margin: 2rem 0 0.6rem;
+}
+
+/* Default markdown lists (used inside essays / prose pages). */
+ul,
+ol {
+  padding-left: 1.3rem;
+}
+
+li {
+  margin: 0.4rem 0;
+}
+
+small,
+.meta {
+  font-size: 0.9rem;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+}
+
+code {
+  background: var(--code-bg);
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  font-size: 0.82em;
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1.1rem 1.2rem;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+/* Astro/Shiki puts an inline (stark white) background on the highlighted block;
+   override it so code blocks sit in the warm palette, with no border. */
+pre.astro-code {
+  background-color: var(--code-block-bg) !important;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.82em;
+}
+
+blockquote {
+  margin: 1.4rem 0;
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--label);
+  color: var(--muted);
+  font-style: italic;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.4rem 0;
+  font-size: 0.95rem;
+  display: block;
+  overflow-x: auto;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+}
+
+th {
+  border-bottom: 2px solid var(--label);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Two text roles, applied consistently across every page:
+   - body prose & page intros use the primary --text color
+   - .desc is the secondary gloss under a title (cards, posts, selected work) */
+.page-intro {
+  color: var(--text);
+}
+
+.desc {
+  color: var(--text-soft);
+}
+
+/* ── Header ───────────────────────────────────────────── */
+.site-header {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 24px 24px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.site-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+
+.site-title:hover {
+  text-decoration: none;
+  color: var(--label);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--muted);
+}
+
+/* Hover underline matches the active-page underline's offset and thickness so
+   they line up exactly (the earlier misalignment was a 2px vs 4px offset). A
+   muted underline color keeps the jade active-state distinct. */
+.site-nav a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 4px;
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--label);
+}
+
+/* ── Contact row (homepage, top) ──────────────────────── */
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+}
+
+.sep {
+  color: var(--muted);
+  font-size: 1.1em;
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+.site-footer {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 2.5rem 24px 4rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+
+/* ── Selected work (homepage) ─────────────────────────── */
+/* Two-column grid: title left, description right — horizontal rather than
+   stacked, so each entry reads compactly on one line. */
+.worklist {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  column-gap: 1.75rem;
+  row-gap: 0.85rem;
+  margin: 1.3rem 0 0;
+}
+
+.worklist dt {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--link);
+}
+
+.worklist dd {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.95em;
+}
+
+@media (max-width: 600px) {
+  .worklist {
+    grid-template-columns: 1fr;
+    row-gap: 0.1rem;
+  }
+
+  .worklist dd {
+    margin-bottom: 0.8rem;
+  }
+}
+
+.more-link {
+  margin-top: 1.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+/* ── Project cards ────────────────────────────────────── */
+.project-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--label);
+  padding: 1.3rem 1.4rem 1.2rem 1.5rem;
+}
+
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1.02em;
+}
+
+.project-card .desc {
+  margin: 0.35rem 0;
+  font-size: 0.95em;
+}
+
+/* Small, smooth, unobtrusive — same treatment as the writing-page tags.
+   Explicit zero bottom margin so the only space below is the card padding. */
+.tags {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
+  margin: 0.6rem 0 0;
+}
+
+.card-links {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  margin: 0.55rem 0 0;
+}
+
+.card-links a {
+  margin-right: 1rem;
+}
+
+/* ── Writing list ─────────────────────────────────────── */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-item {
+  border-top: 1px solid var(--border);
+  padding: 1.6rem 0;
+}
+
+.post-item:first-child {
+  border-top: 0;
+}
+
+.post-item h3 {
+  margin: 0.2rem 0 0.4rem;
+}
+
+.post-item .date {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Post layout ──────────────────────────────────────── */
+.post-header {
+  margin-bottom: 2.5rem;
+}
+
+.post-header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.post-header .meta {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+
+.post-back {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+}
+
+/* ── Essay prose ──────────────────────────────────────────
+   Inside an essay, headings are proper serif section headings — NOT the small
+   uppercase labels used for page sections. (Interests uses PageLayout, so it
+   keeps the label style; only PostLayout content is wrapped in .prose.) */
+.prose h2 {
+  font-family: var(--font-serif);
+  font-size: 1.34em;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text);
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin: 2.4rem 0 0.6rem;
+}
+
+.prose h3 {
+  font-size: 1.12em;
+  color: var(--link);
+  margin: 2rem 0 0.5rem;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose ul,
+.prose ol {
+  margin: 1rem 0;
+}
+
+.prose li {
+  margin: 0.35rem 0;
+}
+
+/* Markers stay neutral — jade reads as confusing noise on tiny dots/symbols;
+   it's reserved for bars and lines (stripes, rules, borders). */
+.prose li::marker {
+  color: var(--muted);
+}

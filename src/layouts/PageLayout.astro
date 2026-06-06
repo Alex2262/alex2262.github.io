@@ -1,0 +1,13 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+// Works both when used directly (title/description props) and as a Markdown
+// page layout, where Astro passes frontmatter under `Astro.props.frontmatter`.
+const { frontmatter } = Astro.props;
+const title = frontmatter?.title ?? Astro.props.title;
+const description = frontmatter?.description ?? Astro.props.description;
+---
+
+<BaseLayout title={title} description={description}>
+  <slot />
+</BaseLayout>

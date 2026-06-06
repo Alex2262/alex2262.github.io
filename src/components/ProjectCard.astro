@@ -1,0 +1,37 @@
+---
+import TagList from "./TagList.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  tags: string[];
+  links?: {
+    github?: string;
+    writeup?: string;
+    demo?: string;
+    paper?: string;
+  };
+}
+
+const { title, description, tags, links } = Astro.props;
+
+const linkEntries = Object.entries(links ?? {}).filter(([, url]) => Boolean(url)) as [
+  string,
+  string,
+][];
+---
+
+<article class="project-card">
+  <h3>{title}</h3>
+  <p class="desc">{description}</p>
+  <TagList tags={tags} />
+  {
+    linkEntries.length > 0 && (
+      <p class="card-links">
+        {linkEntries.map(([label, url]) => (
+          <a href={url}>{label}</a>
+        ))}
+      </p>
+    )
+  }
+</article>

@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const all = await getCollection("projects");
+
+// Sort by date descending.
+all.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Preferred category ordering; anything else falls to the end alphabetically.
+const categoryOrder = [
+  "ML systems / kernels",
+  "Algorithms / engines",
+  "Machine learning experiments",
+  "Simulations / older projects",
+];
+
+const categories = [...new Set(all.map((p) => p.data.category))].sort((a, b) => {
+  const ia = categoryOrder.indexOf(a);
+  const ib = categoryOrder.indexOf(b);
+  if (ia === -1 && ib === -1) return a.localeCompare(b);
+  if (ia === -1) return 1;
+  if (ib === -1) return -1;
+  return ia - ib;
+});
+---
+
+<BaseLayout
+  title="Projects"
+  description="Technical projects, ML-systems work, experiments, and software by Alexander Tian."
+>
+  <h1>Projects</h1>
+  <p class="page-intro">
+    A selection of technical projects, ML-systems work, experiments, and
+    software.
+  </p>
+
+  {
+    categories.map((category) => (
+      <section>
+        <h2>{category}</h2>
+        <div class="project-grid">
+          {all
+            .filter((p) => p.data.category === category)
+            .map((p) => (
+              <ProjectCard
+                title={p.data.title}
+                description={p.data.description}
+                tags={p.data.tags}
+                links={p.data.links}
+              />
+            ))}
+        </div>
+      </section>
+    ))
+  }
+</BaseLayout>

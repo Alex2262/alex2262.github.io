@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#ebe0ca"/>
+  <text
+    x="16"
+    y="22"
+    font-family="Georgia, Cambria, 'Times New Roman', serif"
+    font-size="19"
+    font-weight="400"
+    text-anchor="middle"
+    fill="#7c4a2c"
+  >at</text>
+  <rect x="5" y="26" width="22" height="2" fill="#1f463c"/>
+</svg>

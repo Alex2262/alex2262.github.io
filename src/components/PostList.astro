@@ -1,0 +1,35 @@
+---
+import TagList from "./TagList.astro";
+
+interface PostEntry {
+  slug: string;
+  title: string;
+  date: Date;
+  description: string;
+  tags: string[];
+}
+
+interface Props {
+  posts: PostEntry[];
+}
+
+const { posts } = Astro.props;
+
+const formatDate = (date: Date) =>
+  date.toISOString().slice(0, 10);
+---
+
+<ul class="post-list">
+  {
+    posts.map((post) => (
+      <li class="post-item">
+        <span class="date">{formatDate(post.date)}</span>
+        <h3>
+          <a href={`/writing/${post.slug}`}>{post.title}</a>
+        </h3>
+        <p class="desc">{post.description}</p>
+        <TagList tags={post.tags} />
+      </li>
+    ))
+  }
+</ul>
